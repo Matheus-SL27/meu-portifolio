@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen overflow-y-scroll snap-y snap-mandatory">
+  <div class="h-screen overflow-y-scroll snap-y ">
     
-    <section class="relative snap-start h-screen w-full bg-[linear-gradient(105deg,_#d7d7d7_50%,_#000000_50%)]">
+    <section class="relative snap-start h-screen w-full bg-[linear-gradient(105deg,_#FFFFFF_50%,_#000000_50%)]">
       
       <header class="w-full absolute flex items-center justify-between px-20 z-50">
         <img src="/img/logo.png" class="w-24 h-auto object-cover">
@@ -51,95 +51,41 @@
 
 
 
-    <section class="snap-start min-h-screen w-full bg-preto p-20 flex flex-col">
+    <section class="min-h-screen w-full bg-preto p-10 md:p-20 flex flex-col items-center"> 
+  
+  <h2 class="text-white text-4xl md:text-5xl font-oswald mb-12 uppercase text-center">Tecnologias & Ferramentas</h2>
+  
+  <div class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+    <div v-for="(lista, titulo) in { Frontend: frontend, Backend: backend, Dados: dados, 'Ferramentas e Metodologias': ferramentas }" 
+         :key="titulo"
+         class="flex justify-center flex-col border border-orange-500 rounded-2xl pb-8 bg-zinc-900 shadow-xl">
       
-      <h2 class="text-white text-5xl font-oswald mb-12 uppercase text-center">Tecnologias & Ferramentas</h2>
+      <h3 class="text-center text-white pb-6 pt-5 font-oswald text-2xl uppercase tracking-wider">{{ titulo }}</h3>
       
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start"> <!--div de todas-->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 px-6 justify-items-center">
 
-        <div class="flex justify-center flex-col border border-orange-500 rounded-xl pb-7">
-          <h3 class="text-center text-white pb-1 font-oswald text-2xl">Stack Principal</h3>
-          <p class="text-lg text-cinza/70 text-center pb-4">Ferramentas que mais uso atualmente</p>
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 items-start gap-9 justify-items-center">
-
-
-              <div
-              v-for="tech in stack"
-              :key="tech.nome" 
-              :class="[tech.sombraBase, tech.sombraHover]"
-              class="flex flex-col flex-wrap items-center border-2 border-black w-24 h-auto rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-3">                
-                  <div :class="tech.cor" 
-                  class="flex justify-center items-center px-2 pt-2 shadow-lg">
-                    <img :src="tech.img" :alt="tech.nome" class="w-full h-auto object-contain pb-2">
-                  </div>
-                  <div :class="tech.cor" class="w-full py-1 border-t-2 border-black">
-                    <p class="text-black font-bold text-center text-[11px] uppercase py-1">{{ tech.nome }}</p>
-                  </div>
-              </div>
-
-              
-
-            </div>
-
-            
-        </div>
-
-
-
-        <div class="flex justify-center flex-col border border-orange-500 rounded-xl pb-7">
-          <h3 class="text-center text-white pb-1 font-oswald text-2xl">Linguagens & Outros Conhecimentos</h3>
-          <p class="text-lg text-cinza/70 text-center pb-4">Habilidades que já usei e tenho conhecimento</p>
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 items-start gap-9 justify-items-center">
-
-
-              <div
-              v-for="tech in conhecimentos"
-              :key="tech.nome" 
-              :class="[tech.sombraBase, tech.sombraHover]"
-              class="flex flex-col flex-wrap items-center border-2 border-black w-24 h-auto rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-3">                
-                  <div :class="tech.cor" 
-                  class="flex justify-center items-center px-2 pt-2 shadow-lg">
-                    <img :src="tech.img" :alt="tech.nome" class="w-full h-auto object-contain pb-2">
-                  </div>
-                  <div :class="tech.cor" class="w-full py-1 border-t-2 border-black">
-                    <p class="text-black font-bold text-center text-[11px] uppercase py-1">{{ tech.nome }}</p>
-                  </div>
-              </div>
-
-              
-
-            </div>
-
-        </div>
-
-        <div class="flex justify-center flex-col border border-orange-500 rounded-xl pb-7">
-          <h3 class="text-center text-white pb-1 font-oswald text-2xl">No Radar</h3>
-          <p class="text-lg text-cinza/70 text-center pb-4">Tenho um conhecimento básico e estou melhorando</p>
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 items-start gap-9 justify-items-center">
-
-
-              <div
-              v-for="tech in radar"
-              :key="tech.nome" 
-              :class="[tech.sombraBase, tech.sombraHover]"
-              class="flex flex-col flex-wrap items-center border-2 border-black w-24 h-auto rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-3">                
-                  <div :class="tech.cor" 
-                  class="flex justify-center items-center px-2 pt-2 shadow-lg">
-                    <img :src="tech.img" :alt="tech.nome" class="w-full h-auto object-contain pb-2">
-                  </div>
-                  <div :class="tech.cor" class="w-full py-1 border-t-2 border-black">
-                    <p class="text-black font-bold text-center text-[11px] uppercase py-1">{{ tech.nome }}</p>
-                  </div>
-              </div>
-
-              
-
-            </div>
-
+        <div v-for="tech in lista"
+             :key="tech.nome" 
+             :class="[tech.sombraBase, tech.sombraHover]"
+             class="flex flex-col items-center w-24 rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 group shadow-lg bg-zinc-800 border border-zinc-700/50">
+          
+          <div :class="tech.cor" class="flex justify-center items-center p-3 w-full aspect-square">
+            <img :src="tech.img" :alt="tech.nome" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          
+          <div class="w-full py-2 border-t border-zinc-700 bg-zinc-900/50">
+            <p class="text-zinc-100 font-bold text-center text-[10px] uppercase leading-none px-1 tracking-wider">
+              {{ tech.nome }}
+            </p>
+          </div>
         </div>
 
       </div>
-    </section>
+    </div>
+
+  </div>
+</section>
 
 
 
@@ -147,9 +93,87 @@
 
 
 
+    <section class="h-screen w-full bg-white"> <!-- trajetoria -->
+        <div>
+            <h2 class="text-preto text-5xl font-oswald cente flex justify-center pt-16">TRAJETÓRIA PROFISSIONAL</h2>
+                <Stepper value="Mercedes-Benz (2024 - 2025)" class="pl-5">
+                    <StepItem value="1">
+                        <Step><h4 class="text-black">Mercedes-Benz (2024-2025)</h4></Step>
+                        <StepPanel v-slot="{ activateCallback }">
+                            <div class="flex flex-col min-h-fit pb-10">
+                                <div class="rounded  bg-zinc-100 flex-none flex justify-center items-center font-medium">
+                                  <section class="flex flex-col items-center gap-3 w-full p-4">
+                                    <h3 class="text-lg w-full">Mecânico de Produção Veicular!</h3>
+                                    <p class="w-full">
+                                      Durante dois anos, atuei em um dos ambientes fabris mais avançados do mundo. 
+                                      Minha passagem pela Mercedes-Benz foi marcada pelo desenvolvimento de uma mentalidade analítica e resiliente. 
+                                      Embora focado em Mecânica, aprendi a lidar com sistemas complexos e fluxos de trabalho rigorosos. 
+                                      Essa experiência me deu a base de disciplina necessária para migrar para o desenvolvimento de software, onde aplico a 
+                                      mesma precisão técnica e foco em eficiência que utilizava na linha de produção.
+                                    </p>
+                                    <Galleria 
+                                      :value="images" 
+                                      :numVisible="5" 
+                                      containerStyle="max-width: 40%"
+                                      :showThumbnails="false" 
+                                      :showIndicators="true" 
+                                      :changeItemOnIndicatorHover="true"
+                                    >
+                                      <template #item="slotProps">
+                                        <div class="flex justify-center items-center bg-black/5 rounded-lg overflow-hidden h-[450px] md:h-[600px] w-full">
+                                          <img 
+                                            :src="slotProps.item.itemImageSrc" 
+                                            :alt="slotProps.item.alt" 
+                                            class="h-full w-auto object-contain border-2 border-black rounded-lg" 
+                                          />
+                                        </div>
+                                      </template>
+                                    </Galleria>
+                                  </section>
+                                </div>
+                            </div>
+                        </StepPanel>
+                    </StepItem>
+                    <StepItem value="2">
+                        <Step>FSA Soluções e Tecnologias (2026-atual)</Step>
+                        <StepPanel v-slot="{ activateCallback }">
+                            <div class="flex flex-col min-h-fit pb-10">
+                                <div class="rounded bg-zinc-100 flex-none flex justify-center items-center font-medium">
+                                  <section class="flex flex-col items-center gap-3 w-full p-4">
+                                    <h3 class="text-lg w-full">Mecânico de Produção Veicular!</h3>
+                                    <p class="w-full">
+                                      Durante dois anos, atuei em um dos ambientes fabris mais avançados do mundo. 
+                                      Minha passagem pela Mercedes-Benz foi marcada pelo desenvolvimento de uma mentalidade analítica e resiliente. 
+                                      Embora focado em Mecânica, aprendi a lidar com sistemas complexos e fluxos de trabalho rigorosos. 
+                                      Essa experiência me deu a base de disciplina necessária para migrar para o desenvolvimento de software, onde aplico a 
+                                      mesma precisão técnica e foco em eficiência que utilizava na linha de produção.
+                                    </p>
+                                    <Galleria 
+                                      :value="images" 
+                                      :numVisible="5" 
+                                      containerStyle="max-width: 40%"
+                                      :showThumbnails="false" 
+                                      :showIndicators="true" 
+                                      :changeItemOnIndicatorHover="true"
+                                    >
+                                      <template #item="slotProps">
+                                        <div class="flex justify-center items-center bg-black/5 rounded-lg overflow-hidden h-[450px] md:h-[600px] w-full">
+                                          <img 
+                                            :src="slotProps.item.itemImageSrc" 
+                                            :alt="slotProps.item.alt" 
+                                            class="h-full w-auto object-contain border-2 border-black rounded-lg" 
+                                          />
+                                        </div>
+                                      </template>
+                                    </Galleria>
+                                  </section>
+                                </div>
+                            </div>
+                        </StepPanel>
 
-    <section class="snap-start h-screen w-full bg-cinza flex items-center justify-center">
-      <h2 class="text-preto text-5xl font-oswald">TRAJETÓRIA</h2>
+                    </StepItem>
+                </Stepper>
+          </div>
     </section>
   </div>
 </template>
@@ -159,6 +183,8 @@ definePageMeta({
   layout: false
 })
 
+
+
 const links = [
   { label: 'Sobre mim', to: '/' },
   { label: 'Projetos', to: '/projetos' },
@@ -167,7 +193,7 @@ const links = [
   { label: 'Linha do tempo', to: '/vida' }
 ]
 
-const stack = [
+const frontend = [
   {
     nome: 'JavaScript', 
     img: '/img/javascript.svg', 
@@ -198,13 +224,13 @@ const stack = [
   }
 ]
 
-const conhecimentos = [
+const backend = [
   {
-    nome:'C',
-    img:'/img/c.svg',
-    cor:'bg-sky-500',
-    sombraBase: 'shadow-blue-400/20', 
-    sombraHover:'hover:shadow-blue-700'
+   nome:'NodeJs',
+   img:'/img/nodejs.svg',
+   cor:'bg-green-300',
+   sombraBase: 'shadow-yellow-200/20', 
+   sombraHover:'hover:shadow-yellow-500'
   },
   {
     nome:'Java',
@@ -213,6 +239,7 @@ const conhecimentos = [
     sombraBase: 'shadow-gray-400/20', 
     sombraHover:'hover:shadow-gray-300'
   },
+
   {
     nome:'Python',
     img:'/img/python.svg',
@@ -221,18 +248,38 @@ const conhecimentos = [
     sombraHover:'hover:shadow-violet-700'
   },
   {
-    nome:'MySQL',
-    img:'/img/mysql.svg',
-    cor:'bg-blue-900',
-    sombraBase: 'shadow-blue-700/20', 
-    sombraHover:'hover:shadow-blue-900'
+    nome:'C',
+    img:'/img/c.svg',
+    cor:'bg-sky-500',
+    sombraBase: 'shadow-blue-400/20', 
+    sombraHover:'hover:shadow-blue-700'
+  }
+]
+
+const dados = [
+  {
+  nome:'MySQL',
+  img:'/img/mysql.svg',
+  cor:'bg-blue-900',
+  sombraBase: 'shadow-blue-700/20', 
+  sombraHover:'hover:shadow-blue-900'
   },
   {
-    nome:'Pacote Office',
-    img:'/img/office.svg',
-    cor:'bg-orange-900',
-    sombraBase: 'shadow-orange-600/20', 
-    sombraHover:'hover:shadow-orange-900'
+  nome:'Power BI',
+  img:'/img/powerbi.svg',
+  cor:'bg-yellow-300',
+  sombraBase: 'shadow-yellow-200/20', 
+  sombraHover:'hover:shadow-yellow-500'
+  },
+]
+
+const ferramentas =[
+  {
+    nome: "GitHub",
+    img:'/img/github.svg',
+    cor:'shadow-violet-700',
+    sombraBase: 'shadow-violet-400/20', 
+    sombraHover:'hover:shadow-violet-700'
   },
   {
     nome:'Kaizen',
@@ -255,31 +302,69 @@ const conhecimentos = [
     sombraBase: 'shadow-slate-300/20', 
     sombraHover:'hover:shadow-slate-500'
   },
+] //Ferramentas & Ágil
 
-]
-
-const radar = [
-    {
-    nome:'NodeJs',
-    img:'/img/nodejs.svg',
-    cor:'bg-green-300',
-    sombraBase: 'shadow-yellow-200/20', 
-    sombraHover:'hover:shadow-yellow-500'
+const formacao = [
+  {
+    curso: "Eletroeletrônica",
+    instituicao: "Senai Frederico Jacob",
+    duracao: "2 anos",
+    periodo: "2022 - 2023"
   },
   {
-    nome:'Power BI',
-    img:'/img/powerbi.svg',
-    cor:'bg-yellow-300',
-    sombraBase: 'shadow-yellow-200/20', 
-    sombraHover:'hover:shadow-yellow-500'
+    curso: "Mecânico de Produção Veicular",
+    instituicao: "Senai",
+    duracao: "2 anos",
+    periodo: "2024 - 2025"
   },
   {
-    nome:'Inglês',
-    img:'/img/english.svg',
-    cor:'bg-slate-200',
-    sombraBase: 'shadow-slate-100/20', 
-    sombraHover:'hover:shadow-slate-300'
+    curso: "Ciência da Computação",
+    instituicao: "UNICID - Univesidade Cidade de São Paulo",
+    duracao: "4 anos",
+    periodo: "2024 - 2027"
+  },
+]//formação academica
+
+
+const images = ref([
+  {
+    itemImageSrc: '/img/mercedes/IMG1.jpg', // Caminho da imagem grande
+    thumbnailImageSrc: '/img/mercedes/IMG1.jpg', // Caminho da miniatura
+    alt: 'Descrição do Projeto 1'
+  },
+  {
+    itemImageSrc: '/img/mercedes/IMG2.jpg',
+    thumbnailImageSrc: '/img/mercedes/IMG2.jpg',
+    alt: 'Descrição do Projeto 2'
   }
+]);
 
-]
+
+
 </script>
+
+<style scoped>
+/* Linha conectora do Stepper */
+:deep(.p-stepper-separator) {
+  background-color: #000000 !important;
+}
+
+/* Número/ícone do Step */
+:deep(.p-step-number) {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+/* Texto do Step */
+:deep(.p-step-title) {
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+/* Step ativo */
+:deep(.p-step-header.p-highlight .p-step-number) {
+  background-color: #f97316 !important; /* laranja, sua cor tema */
+  border-color: #f97316 !important;
+}
+</style>
