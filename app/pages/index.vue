@@ -50,18 +50,18 @@
         <h1 class="text-5xl md:text-7xl font-semibold font-oswald text-orange-500 uppercase leading-none drop-shadow-[0_1px_20px_rgba(0,0,0,0.5)] [-webkit-text-stroke:1px_black]">
           Matheus Silva Lima
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-white md:text-preto uppercase">Desenvolvedor em evolução</p>
+        <p class="text-xl md:text-2xl font-bold text-white md:text-preto uppercase">Desenvolvedor Frontend em Evolução</p>
         <p class="text-base md:text-lg text-white/70 md:text-preto/70">Transformando ideias em código de alta performance.</p>
       </div>
 
       <div class="flex gap-4">
-        <a href="" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-violet-700">
+        <a href="https://github.com/Matheus-SL27" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-violet-700">
           <img src="/img/github.png" alt="github" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
         <a href="https://www.instagram.com/math__27" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-fuchsia-500">
           <img src="/img/instagram.png" alt="instagram" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
-        <a href="" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-sky-500">
+        <a href="https://www.linkedin.com/in/matheus-silva-lima-204543286/" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-sky-500">
           <img src="/img/linkedin.png" alt="linkedin" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
       </div>
@@ -200,7 +200,7 @@
       </div>
       <h3 class="text-orange-500 text-lg font-bold uppercase tracking-wider text-center">Udemy</h3>
       <ul class="flex flex-col gap-2">
-        <li class="text-white text-sm border-b border-zinc-700 pb-2">Em desenvolvimento</li>
+        <li v-for="u in udemy" :key="u.curso" class="text-white text-sm border-b border-zinc-700 pb-2">{{ u.curso }}</li>
       </ul>
     </div>
 
@@ -211,7 +211,7 @@
       </div>
       <h3 class="text-orange-500 text-lg font-bold uppercase tracking-wider text-center">Diversos</h3>
       <ul class="flex flex-col gap-2">
-        <li class="text-white text-sm border-b border-zinc-700 pb-2">Em desenvolvimento</li>
+        <li v-for="d in diversos" :key="d.curso" class="text-white text-sm border-b border-zinc-700 pb-2">{{ d.curso }}</li>
       </ul>
     </div>
 
@@ -328,11 +328,11 @@
           <section class="flex flex-col gap-3 w-full">
             <h3 class="text-base md:text-lg w-full font-bold">Desenvolvedor Frontend</h3>
             <p class="w-full text-sm md:text-base">
-              Durante dois anos, atuei em um dos ambientes fabris mais avançados do mundo. 
-              Minha passagem pela Mercedes-Benz foi marcada pelo desenvolvimento de uma mentalidade analítica e resiliente. 
-              Embora focado em Mecânica, aprendi a lidar com sistemas complexos e fluxos de trabalho rigorosos. 
-              Essa experiência me deu a base de disciplina necessária para migrar para o desenvolvimento de software, onde aplico a 
-              mesma precisão técnica e foco em eficiência que utilizava na linha de produção.
+              Na FSA Soluções, atuo no desenvolvimento de interfaces modernas e performáticas utilizando Nuxt.js, 
+              focando na criação de componentes reutilizáveis e na experiência do usuário. Paralelamente, estou em um 
+              processo intensivo de capacitação em FastAPI, visando a construção de APIs ágeis e escaláveis. 
+              Essa transição consolida minha atuação como desenvolvedor Full-Stack, unindo a agilidade do ecossistema 
+              JavaScript no front-end com a robustez e alta performance do Python no back-end.
             </p>
             <Galleria
               :value="images"
@@ -402,11 +402,11 @@
     <hr class="border-zinc-700 my-7" />
 
     <div class="flex gap-3 justify-center flex-wrap">
-      <a href="https://github.com/..." target="_blank"
+      <a href="https://github.com/Matheus-SL27" target="_blank"
         class="flex items-center gap-2 bg-zinc-700 border border-zinc-600 hover:border-orange-500 hover:text-orange-500 text-zinc-400 text-sm px-4 py-2 rounded-lg transition-all">
         <i class="pi pi-github" style="font-size: 15px"></i> GitHub
       </a>
-      <a href="https://linkedin.com/..." target="_blank"
+      <a href="https://www.linkedin.com/in/matheus-silva-lima-204543286/" target="_blank"
         class="flex items-center gap-2 bg-zinc-700 border border-zinc-600 hover:border-orange-500 hover:text-orange-500 text-zinc-400 text-sm px-4 py-2 rounded-lg transition-all">
         <i class="pi pi-linkedin" style="font-size: 15px"></i> LinkedIn
       </a>
@@ -624,6 +624,13 @@ const backend = [
     sombraHover:'hover:shadow-violet-700'
   },
   {
+    nome:'FastAPI',
+    img:'/img/fastapi.svg',
+    cor:'bg-violet-600',
+    sombraBase: 'shadow-violet-400/20', 
+    sombraHover:'hover:shadow-violet-700'
+  },
+  {
     nome:'C',
     img:'/img/c.svg',
     cor:'bg-sky-500',
@@ -735,6 +742,29 @@ const dankicode = [
   {
   curso: "MySQL"
   },
+  {curso: "Em desenvolvimento"}
+]
+
+const udemy=[
+  {
+    curso: "Pacote Office"
+  },
+  {
+    curso: "Em desenvolvimento"
+  }
+]
+
+const diversos =[
+  {curso: "Blockchain "},
+  {curso: "Desvendando o 5G"},
+  {curso: "Economia Circular"},
+  {curso: "Privacidade e Proteção de Dados (LGPD)"},
+  {curso: "Desvendando a Descarnonização"},
+  {curso: "Empreender"},
+  {curso: "Ética na Inteligência Artificial"},
+  {curso: "Por Dentro da Segurança Cibernética"},
+  {curso: "Web 3.0"},
+  {curso: "Em desenvolvimento"}
 ]
 
 const images = ref([
@@ -841,7 +871,7 @@ const projetos = [
       { nome: 'Vue', img: '/img/vue.svg' },
       { nome: 'Bulma', img: '/img/bulma.svg' },
     ],
-    descricao: 'Site desenvolvido com o objetivo de treinar o desenvolvimento reativo do framework Vue.js com o tratamento de erros try/catch, e a utilização de css "pre" feito com o Bulma.',
+    descricao: 'Site desenvolvido com o objetivo de treinar o desenvolvimento reativo do framework Vue.js com o tratamento de erros try/catch, consulmo de api com axios e a utilização de css "pre" feito com o Bulma.',
     imagem: '/img/projetos/pokedex.png',
     github: 'https://github.com/...',
     demo:'https://...'
