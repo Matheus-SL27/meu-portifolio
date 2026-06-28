@@ -748,6 +748,13 @@ const principaisStacks = [
    sombraHover:'hover:shadow-green-500'
   },
   {
+   nome:'Mongo',
+   img:'/img/mongo.svg',
+   cor:'bg-green-300',
+   sombraBase: 'shadow-green-700/20', 
+   sombraHover:'hover:shadow-green-900'
+  },
+  {
     nome:'Tailwind CSS',
     img:'/img/tailwind.svg',
     cor:'bg-cyan-800',
