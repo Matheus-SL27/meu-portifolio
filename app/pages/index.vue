@@ -55,13 +55,13 @@
       </div>
 
       <div class="flex gap-4">
-        <a href="https://github.com/Matheus-SL27" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-violet-700">
+        <a href="https://github.com/Matheus-SL27" target="_blank" rel="noopener noreferrer" class="group bg-violet-600 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-violet-700">
           <img src="/img/github.png" alt="github" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
-        <a href="https://www.instagram.com/math__27" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-fuchsia-500">
+        <a href="https://www.instagram.com/math__27" target="_blank" rel="noopener noreferrer" class="group bg-fuchsia-500 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-fuchsia-500">
           <img src="/img/instagram.png" alt="instagram" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
-        <a href="https://www.linkedin.com/in/matheus-silva-lima-204543286/" target="_blank" rel="noopener noreferrer" class="group bg-gray-300 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-sky-500">
+        <a href="https://www.linkedin.com/in/matheus-silva-lima-204543286/" target="_blank" rel="noopener noreferrer" class="group bg-sky-400 p-3 border-2 rounded-xl border-preto hover:bg-preto hover:text-white transition-all hover:-translate-y-1 shadow-lg shadow-black hover:shadow-sky-500">
           <img src="/img/linkedin.png" alt="linkedin" class="object-cover w-[25px] h-[25px] transition-all group-hover:invert">
         </a>
       </div>
@@ -120,7 +120,31 @@
   <h2 class="text-white text-3xl md:text-5xl font-oswald mb-12 uppercase text-center tracking-tight">
     Meus Conhecimentos
   </h2>
-  
+
+  <!-- Principais Stacks -->
+  <div class="w-full max-w-[1200px] border border-orange-500 rounded-2xl pb-8 bg-zinc-900 shadow-xl mb-8">
+    <h3 class="text-center text-white pb-6 pt-5 font-oswald text-2xl uppercase tracking-wider">Principais Stacks</h3>
+    
+    <div class="flex justify-center gap-6 md:gap-10 px-4 flex-wrap">
+      <div v-for="tech in principaisStacks"
+           :key="tech.nome" 
+           :class="[tech.sombraBase, tech.sombraHover]"
+           class="flex flex-col items-center w-full max-w-[100px] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 group shadow-lg bg-zinc-800 border border-zinc-700/50">
+        
+        <div :class="tech.cor" class="flex justify-center items-center p-3 w-full aspect-square">
+          <img :src="tech.img" :alt="tech.nome" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+        </div>
+        
+        <div class="w-full py-2 border-t border-zinc-700 bg-zinc-900/50">
+          <p class="text-zinc-100 font-bold text-center text-[10px] md:text-xs uppercase leading-none px-1 tracking-wider">
+            {{ tech.nome }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grade com os 4 quadrantes -->
   <div class="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
     <div v-for="(lista, titulo) in { Frontend: frontend, Backend: backend, Dados: dados, 'Ferramentas e Metodologias': ferramentas }" 
@@ -326,7 +350,7 @@
       <StepPanel>
         <div class="rounded bg-zinc-100 p-4 md:p-6">
           <section class="flex flex-col gap-3 w-full">
-            <h3 class="text-base md:text-lg w-full font-bold">Desenvolvedor Frontend</h3>
+            <h3 class="text-base md:text-lg w-full font-bold">Desenvolvedor</h3>
             <p class="w-full text-sm md:text-base">
               Na FSA Soluções, atuo no desenvolvimento de interfaces modernas e performáticas utilizando Nuxt.js, 
               focando na criação de componentes reutilizáveis e na experiência do usuário. Paralelamente, estou em um 
@@ -334,7 +358,7 @@
               Essa transição consolida minha atuação como desenvolvedor Full-Stack, unindo a agilidade do ecossistema 
               JavaScript no front-end com a robustez e alta performance do Python no back-end.
             </p>
-            <Galleria
+<!--          <Galleria
               :value="images"
               :numVisible="5"
               :showThumbnails="false"
@@ -351,7 +375,7 @@
                   />
                 </div>
               </template>
-            </Galleria>
+            </Galleria>-->
           </section>
         </div>
       </StepPanel>
@@ -445,14 +469,14 @@ const enviarEmail = async () => {
   
   try {
     await emailjs.send(
-      'service_fspzru6', // Substitua pelo seu
-      'template_3q6g2st', // Substitua pelo seu
+      'service_fspzru6', 
+      'template_3q6g2st', 
       form.value,
-      'Yb7N2Yr1BEu61gutH'   // Substitua pela sua
+      'Yb7N2Yr1BEu61gutH'   
     );
     
     alert('Mensagem enviada com sucesso! Em breve te respondo.');
-    form.value = { from_name: '', reply_to: '', message: '' }; // Limpa o formulário
+    form.value = { from_name: '', reply_to: '', message: '' }; 
   } catch (error) {
     console.error('Erro ao enviar:', error);
     alert('Ops! Algo deu errado ao enviar. Tente novamente mais tarde.');
@@ -708,6 +732,30 @@ const ferramentas =[
   },
 ] //Ferramentas & Ágil
 
+const principaisStacks = [
+  {
+    nome:'Nuxt',
+    img:'/img/nuxt.svg',
+    cor:'bg-green-400',
+    sombraBase: 'shadow-green-400/20',
+    sombraHover:'hover:shadow-green-300'
+  },
+  {
+   nome:'NodeJs',
+   img:'/img/nodejs.svg',
+   cor:'bg-green-300',
+   sombraBase: 'shadow-green-200/20', 
+   sombraHover:'hover:shadow-green-500'
+  },
+  {
+    nome:'Tailwind CSS',
+    img:'/img/tailwind.svg',
+    cor:'bg-cyan-800',
+    sombraBase: 'shadow-cyan-600/20', 
+    sombraHover:'hover:shadow-cyan-900'
+  },
+]
+
 const formacao = [
   {
     curso: "Eletroeletrônica",
@@ -854,16 +902,16 @@ const first = ref(0)
 
 const projetos = [
   {
-    titulo: 'Portfolio Pessoal',
+    titulo: 'Ingressos Full-Stack',
     subtitulo: [
       { nome: 'Nuxt', img: '/img/nuxt.svg' },
+      { nome: 'NodeJs', img: '/img/nodejs.svg' },
       { nome: 'Tailwind CSS', img: '/img/tailwind.svg' },
-      { nome: 'PrimeVue', img: '/img/primevue.svg' },
     ],
-    descricao: 'Site de portfólio desenvolvido com Nuxt 3, PrimeVue e talwind css.',
-    imagem: '/img/projetos/portfolio.png',
-    github: 'https://github.com/...',
-    demo: 'https://...'
+    descricao: 'Esse projeto tem o objetivo de desenvolver meus conhecimentos sobre arquitetura de software, usando o NodeJs como Backend, o Nuxt como Frontend e o banco NoSQL MongoDB',
+    imagem: '/img/projetos/show.png',
+    github: 'https://github.com/Matheus-SL27/projeto-ingressos',
+    demo: ''
   },
   {
     titulo: 'Pokédex',
@@ -874,7 +922,19 @@ const projetos = [
     descricao: 'Site desenvolvido com o objetivo de treinar o desenvolvimento reativo do framework Vue.js com o tratamento de erros try/catch, consulmo de api com axios e a utilização de css "pre" feito com o Bulma.',
     imagem: '/img/projetos/pokedex.png',
     github: 'https://github.com/...',
-    demo:'https://...'
+    demo:''
+  },
+  {
+    titulo: 'Portfolio Pessoal',
+    subtitulo: [
+      { nome: 'Nuxt', img: '/img/nuxt.svg' },
+      { nome: 'Tailwind CSS', img: '/img/tailwind.svg' },
+      { nome: 'PrimeVue', img: '/img/primevue.svg' },
+    ],
+    descricao: 'Site de portfólio desenvolvido com Nuxt e PrimeVue com o objetivo de mostrar meus principais projetos, experiências e sobre mim.',
+    imagem: '/img/projetos/portfolio.png',
+    github: 'https://github.com/Matheus-SL27/meu-portifolio',
+    demo: ''
   },
   {
     titulo: 'Landing Page StarBucks',
@@ -884,32 +944,19 @@ const projetos = [
     ],
     descricao: 'Desenvolvida usando apenas html e css com o objetivo de treinar estilização.',
     imagem: '/img/projetos/starbucks.png',
-    github: 'https://github.com/...',
-    demo: 'https://...'
+    github: 'https://github.com/Matheus-SL27/Landing-Page_Starbucks',
+    demo: ''
   },
   {
-    titulo: 'Portfolio Pessoal',
+    titulo: 'Salus Odonto',
     subtitulo: [
-      { nome: 'Nuxt', img: '/img/nuxt.svg' },
-      { nome: 'Tailwind CSS', img: '/img/tailwind.svg' },
-      { nome: 'PrimeVue', img: '/img/primevue.svg' },
+      { nome: 'HTML', img: '/img/htmll.svg' },
+      { nome: 'CSS', img: '/img/csss.svg' },
     ],
-    descricao: 'Site de portfólio desenvolvido com Nuxt 3 e PrimeVue.',
-    imagem: '/img/projetos/portfolio.png',
-    github: 'https://github.com/...',
-    demo: 'https://...'
-  },
-  {
-    titulo: 'Portfolio Pessoal',
-    subtitulo: [
-      { nome: 'Nuxt', img: '/img/nuxt.svg' },
-      { nome: 'Tailwind CSS', img: '/img/tailwind.svg' },
-      { nome: 'PrimeVue', img: '/img/primevue.svg' },
-    ],
-    descricao: 'Site de portfólio desenvolvido com Nuxt 3 e PrimeVue.',
-    imagem: '/img/projetos/portfolio.png',
-    github: 'https://github.com/...',
-    demo: 'https://...'
+    descricao: 'Visual simples de um site de dentista feito para um trabalho da faculdade, o principal objetivo do trabalho era usar o Trello e o Scrum',
+    imagem: '/img/projetos/salus.png',
+    github: 'https://github.com/Matheus-SL27/Salus_Odonto',
+    demo: ''
   },
 ]
 
@@ -925,25 +972,22 @@ const projetosPorPagina = computed(() => {
 </script>
 
 <style scoped>
-/* Linha conectora do Stepper */
+
 :deep(.p-stepper-separator) {
   background-color: #000000 !important;
 }
 
-/* Número/ícone do Step */
 :deep(.p-step-number) {
   background-color: #000000 !important;
   color: #ffffff !important;
   border-color: #000000 !important;
 }
 
-/* Texto do Step */
 :deep(.p-step-title) {
   color: #000000 !important;
   font-weight: bold;
 }
 
-/* Step ativo */
 :deep(.p-step-header.p-highlight .p-step-number) {
   background-color: #f97316 !important; /* laranja, sua cor tema */
   border-color: #f97316 !important;
