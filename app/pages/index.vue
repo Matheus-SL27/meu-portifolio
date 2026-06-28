@@ -934,7 +934,7 @@ const projetos = [
     descricao: 'Site de portfólio desenvolvido com Nuxt e PrimeVue com o objetivo de mostrar meus principais projetos, experiências e sobre mim.',
     imagem: '/img/projetos/portfolio.png',
     github: 'https://github.com/Matheus-SL27/meu-portifolio',
-    demo: ''
+    demo: 'https://meu-portfolio-five-sigma.vercel.app/'
   },
   {
     titulo: 'Landing Page StarBucks',
